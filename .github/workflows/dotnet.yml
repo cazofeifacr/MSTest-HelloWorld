@@ -23,3 +23,19 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --collect:"XPlat Code Coverage" --logger trx --verbosity normal
+    - name: Test Report    
+      uses: dorny/test-reporter@v1
+      if: success() || failure()
+      with:
+        artifact: ''
+        name: ''
+        path: ''
+        path-replace-backslashes: 'false'
+        reporter: 'dotnet-trx'
+        only-summary: 'false'
+        list-suites: 'all'
+        list-tests: 'all'
+        max-annotations: '10'
+        fail-on-error: 'true'
+        working-directory: '/TestResults'
+        token: ''
