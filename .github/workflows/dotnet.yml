@@ -72,21 +72,4 @@ jobs:
         max-annotations: '10'
         fail-on-error: 'true'
  
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      if: success() || failure()
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-    
-    - name: SonarQube Quality Gate check
-      id: sonarqube-quality-gate-check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      if: success() || failure()
-      # Force to fail step after specific time.
-      timeout-minutes: 5
-      with:
-        scanMetadataReportFile: .sonarqube/out/.sonar/report-task.txt
-      env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+   
