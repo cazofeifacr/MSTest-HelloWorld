@@ -42,8 +42,8 @@ jobs:
       if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
       shell: pwsh
       run: |
-        New-Item -Path .\.sonar\scanner -ItemType Directory
-        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+        New-Item -Path ./.sonar/scanner -ItemType Directory
+        dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
         
     - name: Restore dependencies
       run: dotnet restore
@@ -53,10 +53,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
       shell: pwsh
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"example" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+        ./.sonar/scanner/dotnet-sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
         dotnet build --no-restore
         dotnet test --no-build --collect:"XPlat Code Coverage" --logger trx --verbosity normal
-        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
     - name: Test Report    
       uses: dorny/test-reporter@v1
