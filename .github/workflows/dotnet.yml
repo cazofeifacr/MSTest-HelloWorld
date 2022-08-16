@@ -14,6 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-gitversion@v1.0.0
+      with:
+          gitversion-version: 5.10.0
+    - run: GitVersion
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
@@ -24,13 +29,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.11
-    
-    - name: GitVersion
-      uses: actions/setup-gitversion@v1.0.0
-      with:
-        gitversion-version: 5.1.1
-        
-    - run: GitVersion
+
       
     - name: Cache SonarQube packages
       uses: actions/cache@v1
