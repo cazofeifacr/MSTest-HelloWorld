@@ -29,7 +29,7 @@ jobs:
       with:
         artifact: ''
         name: ''
-        path: ''
+        path: TestResults/**/*.trx
         path-replace-backslashes: 'false'
         reporter: 'dotnet-trx'
         only-summary: 'false'
@@ -37,5 +37,5 @@ jobs:
         list-tests: 'all'
         max-annotations: '10'
         fail-on-error: 'true'
-        working-directory: '/TestResults'
+        working-directory: ''
         token: ''
