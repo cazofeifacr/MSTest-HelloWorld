@@ -1,0 +1,40 @@
+mode: mainline
+branches:
+  master:
+    tag: ''
+    increment: Patch
+    source-branches: [staging] 
+  hotfix:
+    tag: rc-beta
+  develop:
+    is-mainline: true
+    tag: rc
+    increment: Inherit
+  feature:
+    tag: alpha.{BranchName}
+    increment: None
+  bugfix:
+    tag: alpha.{BranchName}
+    increment: None
+    regex: ^[Bb]ugfix[/-]
+    source-branches: [develop]
+  fix:
+    tag: alpha.{BranchName}
+    increment: None
+    regex: ^[Ff]ix[/-]
+    source-branches: [develop] 
+  staging:  
+    tag: ''
+    increment: None
+    regex: ^[Ss]taging[/-]
+    source-branches: [develop]
+  pull-request:
+    tag: alpha-pull
+    tag-number-pattern: '[/-](?<number>\d+)[-/]'
+    increment: None
+  support:
+    tag: alpha.{BranchName}
+    increment: None
+ignore:
+  sha: []
+  
