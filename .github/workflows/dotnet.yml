@@ -68,6 +68,7 @@ jobs:
       run: dotnet restore
       
     - name: Build-Test and analyze
+      if: ${{ always() }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: pwsh
