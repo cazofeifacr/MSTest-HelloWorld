@@ -1,4 +1,4 @@
-name: .NET-macOS
+name: .NET-macOS_x64
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   BuildAndTest:
-    runs-on: [self-hosted, macOS]
+    runs-on: [self-hosted, macOS_x64]
 
     steps:
     - uses: actions/checkout@v3
@@ -94,7 +94,7 @@ jobs:
         
   calculate-version:
       name: Calculate Version
-      runs-on: [self-hosted, macOS]
+      runs-on: [self-hosted, macOS_x64]
       
       outputs:
         semVer: ${{ steps.gitversion.outputs.semVer }}
@@ -122,7 +122,7 @@ jobs:
           
   display-semver:
       name: Display Semantic Version
-      runs-on: [self-hosted, macOS]
+      runs-on: [self-hosted, macOS_x64]
       
       needs: calculate-version
       env:
