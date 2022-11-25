@@ -94,7 +94,7 @@ jobs:
         
   calculate-version:
       name: Calculate Version
-      runs-on: [self-hosted, Linux]
+      runs-on: [self-hosted, winx64]
       
       outputs:
         semVer: ${{ steps.gitversion.outputs.semVer }}
@@ -122,7 +122,7 @@ jobs:
           
   display-semver:
       name: Display Semantic Version
-      runs-on: [self-hosted, Linux]
+      runs-on: [self-hosted, winx64]
       
       needs: calculate-version
       env:
