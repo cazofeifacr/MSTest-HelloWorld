@@ -1,0 +1,16 @@
+name: TFS
+
+on:
+  push
+  
+jobs:
+  deploy-using-azure-pipelines:
+    needs: build-in-actions-workflow
+    runs-on: [self-hosted, winx64]
+    steps:
+    - name: 'Trigger an Azure Pipeline to build'
+      uses: Azure/pipelines@releases/v1
+      with:
+        azure-devops-project-url: 'https://collaboration.artinsoft.com/tfs/Product/'
+        azure-pipeline-name: 'cazofeifacr.MSTest-HelloWorld' 
+        azure-devops-token: 'jxiw6tlhwvomjn7m5e7ra6zq7zhz2thgzbavmzqio4kef3ctv2lq'
