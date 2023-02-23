@@ -10,7 +10,7 @@ trigger:
     include:
     - main 
 
-pool: 'Product-Pipelines-Snow'
+pool: 'Product-Integration-S4'
 
 variables:
   solution: '**/*.sln'
