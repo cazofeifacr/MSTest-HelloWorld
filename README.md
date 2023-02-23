@@ -1,1 +1,1 @@
-# MSTest-HelloWorld-2023
+# MSTest-HelloWorld
