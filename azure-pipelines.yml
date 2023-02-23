@@ -6,8 +6,7 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'Product-Pipelines-Snow'
+pool: 'Product-Pipelines-Snow'
 
 variables:
   solution: '**/*.sln'
