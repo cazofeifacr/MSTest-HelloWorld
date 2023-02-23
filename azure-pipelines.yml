@@ -3,9 +3,12 @@
 # Build and run tests for .NET Desktop or Windows classic desktop solutions.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
-
+    
 trigger:
-- main
+  batch: true
+  branches:
+    include:
+    - main 
 
 pool: 'Product-Pipelines-Snow'
 
